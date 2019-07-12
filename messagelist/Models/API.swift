@@ -29,10 +29,11 @@ class API {
     static func fetchMessages(_ pageToken:String? = nil, completion: @escaping RequestCompletion){
         
         guard let url = messageUrl(pageToken) else {
-            abort() //TODO: better handling in this case
+            completion(.failure(error: nil))
+            return
         }
         
-        URLSession.shared.dataTask(with: url) { (data, resp, error) in
+        URLSession.shared.dataTask(with: url) { (data, _, error) in
             
             var response:Response?
             var reportedError = error
@@ -46,12 +47,10 @@ class API {
                 reportedError = parseError
             }
             
-            DispatchQueue.main.async {
-                if reportedError != nil {
-                    completion(.failure(error: reportedError))
-                } else if response != nil {
-                    completion(.success(data: response!))
-                }
+            if let r = response, reportedError == nil {
+                completion(.success(data: r))
+            } else {
+                completion(.failure(error: reportedError))
             }
             
         }.resume()

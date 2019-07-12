@@ -13,7 +13,7 @@ class MessagesViewController: UITableViewController {
     var page:String?
     var fetching = false
     var messageList = [Message]()
-    var messageHeights = [IndexPath:CGFloat]()
+    var messageHeights = [Int:CGFloat]()
     var imageCache:NSCache<NSString,UIImage> = {
         let c = NSCache<NSString,UIImage>()
         c.countLimit = 100 //cache up to ~100 avatars
@@ -30,24 +30,34 @@ class MessagesViewController: UITableViewController {
     
     var responseHandler:RequestCompletion {
         return { [weak self] (responseCode) in
+            
             switch responseCode {
                 
             case .success(let response):
-                let first = self!.messageList.count-1
+                
+                guard let count = self?.messageList.count else {
+                    return
+                }
+                
+                let first = count-1
                 let last = first+response.messages.count-1
                 
-                self?.messageList.append(contentsOf: response.messages)
                 self?.page = response.pageToken
                 
                 var indexes = [IndexPath]()
                 for i in first...last {
                     indexes.append(IndexPath(row: i, section: 0))
                 }
-                self?.tableView.insertRows(at: indexes, with: .fade)
+                
+                DispatchQueue.main.async {
+                    self?.messageList.append(contentsOf: response.messages)
+                    self?.tableView.insertRows(at: indexes, with: .fade)
+                }
                 
             case .failure(let error):
                 print(error?.localizedDescription ?? "unknown error")
             }
+            
             self?.fetching = false
         }
     }
@@ -89,11 +99,13 @@ extension MessagesViewController {
             fetching = true
             API.fetchMessages(page, completion: responseHandler)
         }
-        messageHeights[indexPath] = cell.frame.size.height
+        let message = messageList[indexPath.row]
+        messageHeights[message.id] = cell.frame.size.height
     }
     
     override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return messageHeights[indexPath] ?? 50
+        let message = messageList[indexPath.row]
+        return messageHeights[message.id] ?? 50
     }
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {

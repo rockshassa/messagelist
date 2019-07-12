@@ -13,6 +13,11 @@ class MessageCell : UITableViewCell {
     @IBOutlet weak var avatar: UIImageView!
     @IBOutlet weak var contentLabel: UILabel!
     
+    override func updateConstraints() {
+        super.updateConstraints()
+        avatar.layer.cornerRadius = avatar.frame.size.width/2
+    }
+    
     override func prepareForReuse() {
         avatar.image = nil
         contentLabel.text = nil
