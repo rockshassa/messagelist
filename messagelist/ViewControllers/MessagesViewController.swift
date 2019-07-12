@@ -1,4 +1,4 @@
-//
+    //
 //  ViewController.swift
 //  messagelist
 //
@@ -27,6 +27,11 @@ class MessagesViewController: UITableViewController {
             API.fetchMessages(completion: responseHandler)
         }
     }
+}
+
+//MARK:- Response handling
+
+extension MessagesViewController {
     
     var responseHandler:RequestCompletion {
         return { [weak self] (responseCode) in
@@ -42,14 +47,13 @@ class MessagesViewController: UITableViewController {
                 let first = count-1
                 let last = first+response.messages.count-1
                 
-                self?.page = response.pageToken
-                
                 var indexes = [IndexPath]()
                 for i in first...last {
                     indexes.append(IndexPath(row: i, section: 0))
                 }
                 
                 DispatchQueue.main.async {
+                    self?.page = response.pageToken
                     self?.messageList.append(contentsOf: response.messages)
                     self?.tableView.insertRows(at: indexes, with: .fade)
                 }
@@ -58,7 +62,9 @@ class MessagesViewController: UITableViewController {
                 print(error?.localizedDescription ?? "unknown error")
             }
             
-            self?.fetching = false
+            DispatchQueue.main.async {
+                self?.fetching = false
+            }
         }
     }
 }

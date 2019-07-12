@@ -9,22 +9,6 @@
 import Foundation
 import CoreData
 
-/*
- {
- 'count': number of messages,
- 'messages': {
-     'id': integer message ID
-     'author': {
-         'name': name of the message author,
-         'photoUrl': photo of the message author,
-        },
-     'updated': UTC timestamp of the messages creation time,
-     'content': message content,
- },
- 'pageToken': a continuation token for the next page of messages
- }
- */
-
 class Message : Decodable {
     var id:Int
     var author:Author
