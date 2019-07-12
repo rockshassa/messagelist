@@ -10,7 +10,6 @@
 		237F4A4E22D4F566006A3F3C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237F4A4D22D4F566006A3F3C /* AppDelegate.swift */; };
 		237F4A5022D4F566006A3F3C /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237F4A4F22D4F566006A3F3C /* MessagesViewController.swift */; };
 		237F4A5322D4F566006A3F3C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 237F4A5122D4F566006A3F3C /* Main.storyboard */; };
-		237F4A5622D4F566006A3F3C /* messagelist.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 237F4A5422D4F566006A3F3C /* messagelist.xcdatamodeld */; };
 		237F4A5822D4F568006A3F3C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 237F4A5722D4F568006A3F3C /* Assets.xcassets */; };
 		237F4A5B22D4F568006A3F3C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 237F4A5922D4F568006A3F3C /* LaunchScreen.storyboard */; };
 		237F4A6322D4F9BA006A3F3C /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237F4A6222D4F9BA006A3F3C /* Message.swift */; };
@@ -23,7 +22,6 @@
 		237F4A4D22D4F566006A3F3C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		237F4A4F22D4F566006A3F3C /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		237F4A5222D4F566006A3F3C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		237F4A5522D4F566006A3F3C /* messagelist.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = messagelist.xcdatamodel; sourceTree = "<group>"; };
 		237F4A5722D4F568006A3F3C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		237F4A5A22D4F568006A3F3C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		237F4A5C22D4F568006A3F3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -69,7 +67,6 @@
 				237F4A5722D4F568006A3F3C /* Assets.xcassets */,
 				237F4A5922D4F568006A3F3C /* LaunchScreen.storyboard */,
 				237F4A5C22D4F568006A3F3C /* Info.plist */,
-				237F4A5422D4F566006A3F3C /* messagelist.xcdatamodeld */,
 				237F4A6222D4F9BA006A3F3C /* Message.swift */,
 				237F4A6622D4FCAA006A3F3C /* API.swift */,
 			);
@@ -150,7 +147,6 @@
 				237F4A5022D4F566006A3F3C /* MessagesViewController.swift in Sources */,
 				237F4A6322D4F9BA006A3F3C /* Message.swift in Sources */,
 				237F4A4E22D4F566006A3F3C /* AppDelegate.swift in Sources */,
-				237F4A5622D4F566006A3F3C /* messagelist.xcdatamodeld in Sources */,
 				237F4A6722D4FCAA006A3F3C /* API.swift in Sources */,
 				237F4A6922D5089C006A3F3C /* MessageCell.swift in Sources */,
 			);
@@ -352,19 +348,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		237F4A5422D4F566006A3F3C /* messagelist.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				237F4A5522D4F566006A3F3C /* messagelist.xcdatamodel */,
-			);
-			currentVersion = 237F4A5522D4F566006A3F3C /* messagelist.xcdatamodel */;
-			path = messagelist.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 237F4A4222D4F566006A3F3C /* Project object */;
 }
